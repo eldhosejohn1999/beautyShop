@@ -6,6 +6,7 @@ import com.devhopes.beautyshop.repository.ItemsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Component
@@ -15,7 +16,7 @@ public class ItemServicesImpl implements ItemServices {
     ItemsRepository itemsRepository;
     boolean isSlotFound = false;
 
-    private void updateItem(Item item, Integer numberOfSlotsRemaining,List<Slot> slots){
+    private void updateItem(Item item, Integer numberOfSlotsRemaining, List<Slot> slots) {
         itemsRepository.save(Item.builder()
                 .id(item.getId())
                 .description(item.getDescription())
@@ -40,10 +41,17 @@ public class ItemServicesImpl implements ItemServices {
                 if (!slot.isBooked() && slot.getBookingId().isEmpty()) {
                     slot.setBookingId(bookingId);
                     slot.setBooked(true);
-                    updateItem(item,numberOfSlotsRemaining,slots);
+                    updateItem(item, numberOfSlotsRemaining, slots);
                 }
             }
         });
         return isSlotFound;
+    }
+
+    @Override
+    public List<Item> getAllItems() {
+        List<Item> items = new ArrayList<>();
+        itemsRepository.findAll().forEach(items::add);
+        return items;
     }
 }

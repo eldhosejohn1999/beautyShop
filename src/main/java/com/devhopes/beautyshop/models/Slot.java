@@ -6,7 +6,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import java.sql.Time;
 
 @Data
 @NoArgsConstructor
@@ -32,12 +31,12 @@ public class Slot {
     boolean isBooked;
 
     /**
-     * Begin Time of the slot
+     * Begin Time of the slot for eg. 10AM
      */
-    Time beginTime;
+    String beginTime;
 
     /**
-     * End time of the slot
+     * End time of the slot for eg. 10.30AM
      */
-    Time endTime;
+    String endTime;
 }

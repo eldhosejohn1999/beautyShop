@@ -4,6 +4,7 @@ import com.devhopes.beautyshop.enums.Ratings;
 import com.devhopes.beautyshop.models.Booking;
 import com.devhopes.beautyshop.models.Item;
 import com.devhopes.beautyshop.models.Rating;
+import com.devhopes.beautyshop.models.Slot;
 import com.devhopes.beautyshop.repository.ItemsRepository;
 import org.joda.time.DateTime;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,6 +37,11 @@ public class AdminServicesImpl implements AdminServices {
                     .TotalSlotsPerDay(5)
                     .numberOfSlotsRemaining(5)
                     .numberOfCustomersPerSlot(1)
+                    .slots(Arrays.asList(Slot.builder().slotId(UUID.randomUUID().toString())
+                            .isBooked(false)
+                            .bookingId("").beginTime("10AM")
+                            .endTime("10.30AM")
+                            .build()))
                     .ratings(Arrays.asList(Rating.builder()
                             .starsOutOfFive(3)
                             .userRating(Ratings.AVERAGE)
