@@ -2,16 +2,20 @@ package com.devhopes.beautyshop.models;
 
 import lombok.*;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.util.Date;
 
 @Value
 @AllArgsConstructor(access = AccessLevel.PROTECTED)
 @Builder(toBuilder = true)
+@Entity
 public class Booking {
 
     /**
      * Unique id for a booking
      */
+    @Id
     String bookingId;
 
     /**
@@ -24,7 +28,7 @@ public class Booking {
      * Customer details to contact
      */
     @NonNull
-    Customer customer;
+    String customerId;
 
     /**
      * Date for which the customer needs to book the item

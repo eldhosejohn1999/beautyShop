@@ -2,6 +2,10 @@ package com.devhopes.beautyshop.models;
 
 import lombok.*;
 
+import javax.persistence.ElementCollection;
+import javax.persistence.Embedded;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.util.Date;
 import java.util.List;
 
@@ -9,11 +13,13 @@ import java.util.List;
 @Value
 @AllArgsConstructor(access = AccessLevel.PROTECTED)
 @Builder(toBuilder = true)
+@Entity
 public class Item {
     /**
      * Unique id of an Item
      */
     @NonNull
+    @Id
     String id;
 
     /**
@@ -34,14 +40,20 @@ public class Item {
     long durationInMinutes;
 
     /**
-     *Which all dates are available, default available always
+     * Which all dates are available, default available always
      */
+    @ElementCollection(targetClass=Date.class)
     List<Date> datesAvailable;
 
     /**
-     * Number of slots available a day
+     * Total Number of slots available a day
      */
-    Integer numberOfSlotsPerDay;
+    Integer TotalSlotsPerDay;
+
+    /**
+     * Remaining Number of slots for the day
+     */
+    Integer numberOfSlotsRemaining;
 
     /**
      * Number of people per slot
@@ -49,7 +61,14 @@ public class Item {
     Integer numberOfCustomersPerSlot;
 
     /**
-     *List of all ratings users has given
+     * List of all ratings users has given
      */
+    @Embedded
+    @ElementCollection(targetClass=Rating.class)
     List<Rating> ratings;
+
+    /**
+     * Is available or not, default is true
+     */
+    boolean isAvailable = true;
 }

@@ -3,15 +3,20 @@ package com.devhopes.beautyshop.models;
 import com.devhopes.beautyshop.enums.Booking_Status;
 import lombok.*;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
 @Value
 @AllArgsConstructor(access = AccessLevel.PROTECTED)
 @Builder(toBuilder = true)
+@Entity
 public class BookingResponse {
 
     /**
      * Unique id of the booking response
      */
     @NonNull
+    @Id
     String id;
 
     /**
@@ -24,7 +29,7 @@ public class BookingResponse {
      * Status of the booking made
      */
     @NonNull
-    Booking_Status bookingStatus;
+    String bookingStatus;
 
     /**
      * Reasons or remarks if any

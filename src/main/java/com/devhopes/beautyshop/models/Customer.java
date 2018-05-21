@@ -2,16 +2,21 @@ package com.devhopes.beautyshop.models;
 
 import lombok.*;
 
+import javax.persistence.ElementCollection;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.util.List;
 
 @Value
 @AllArgsConstructor(access = AccessLevel.PROTECTED)
 @Builder(toBuilder = true)
+@Entity
 public class Customer {
     /**
      * Unique id for a customer
      */
     @NonNull
+    @Id
     String customerId;
 
     /**
@@ -40,5 +45,6 @@ public class Customer {
     /**
      * Customers favourites
      */
+    @ElementCollection(targetClass=Item.class)
     List<Item> customerFavourites;
 }

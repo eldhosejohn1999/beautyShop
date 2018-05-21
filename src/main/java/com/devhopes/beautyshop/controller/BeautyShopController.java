@@ -20,10 +20,12 @@ public class BeautyShopController {
 
     @RequestMapping(method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<BookingResponse> bookSlotsForItem(@RequestBody @NotNull Booking booking) {
+
+
         return ResponseEntity.ok(BookingResponse.builder()
                 .id(UUID.randomUUID().toString())
                 .bookingId(booking.getBookingId())
-                .bookingStatus(Booking_Status.BOOKED)
+                .bookingStatus(Booking_Status.BOOKED.name())
                 .remarks("Thanks for booking")
                 .build());
     }
