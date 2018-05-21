@@ -1,5 +1,4 @@
 package com.devhopes.beautyshop.models;
-
 import lombok.*;
 
 import javax.persistence.ElementCollection;
@@ -9,9 +8,9 @@ import javax.persistence.Id;
 import java.util.Date;
 import java.util.List;
 
-
-@Value
-@AllArgsConstructor(access = AccessLevel.PROTECTED)
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 @Builder(toBuilder = true)
 @Entity
 public class Item {
@@ -48,11 +47,13 @@ public class Item {
     /**
      * Total Number of slots available a day
      */
+    @NonNull
     Integer TotalSlotsPerDay;
 
     /**
      * Remaining Number of slots for the day
      */
+    @Setter
     Integer numberOfSlotsRemaining;
 
     /**
@@ -70,5 +71,17 @@ public class Item {
     /**
      * Is available or not, default is true
      */
-    boolean isAvailable = true;
+    boolean isAvailable;
+
+    /**
+     * Needs confirmation via call, default false
+     */
+    boolean isAdminConfirmationNeeded;
+
+    /**
+     * Slots which defines the timings and the booking details if any
+     */
+    @Embedded
+    @ElementCollection(targetClass=Slot.class)
+    List<Slot> slots;
 }

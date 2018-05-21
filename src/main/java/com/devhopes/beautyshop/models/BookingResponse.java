@@ -1,13 +1,13 @@
 package com.devhopes.beautyshop.models;
 
-import com.devhopes.beautyshop.enums.Booking_Status;
 import lombok.*;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
-@Value
+@Data
 @AllArgsConstructor(access = AccessLevel.PROTECTED)
+@NoArgsConstructor
 @Builder(toBuilder = true)
 @Entity
 public class BookingResponse {

@@ -6,7 +6,8 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import java.util.Date;
 
-@Value
+@Data
+@NoArgsConstructor
 @AllArgsConstructor(access = AccessLevel.PROTECTED)
 @Builder(toBuilder = true)
 @Entity
@@ -40,5 +41,5 @@ public class Booking {
      * The Slot number the customer needs to book
      */
     @NonNull
-    Integer slotForBooking;
+    String slotIdForBooking;
 }

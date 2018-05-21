@@ -1,14 +1,11 @@
 package com.devhopes.beautyshop.models;
 
 import com.devhopes.beautyshop.enums.Ratings;
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Value;
-
+import lombok.*;
 import javax.persistence.Embeddable;
 
-@Value
+@Data
+@NoArgsConstructor
 @AllArgsConstructor(access = AccessLevel.PROTECTED)
 @Builder(toBuilder = true)
 @Embeddable
