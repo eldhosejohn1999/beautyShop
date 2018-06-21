@@ -37,7 +37,7 @@ public class BeautyShopController {
         return itemServices.getAllItems();
     }
 
-    @RequestMapping(method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE, path = "/getAllItems")
+    @RequestMapping(method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE, path = "/getNextBookingId")
     public String getNextBookingId(){
         return UUID.randomUUID().toString();
     }
